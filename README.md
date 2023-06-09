@@ -1,7 +1,5 @@
-# Jetilac
-
-# Reçete Melekleri
-# Takım F-153
+# Takım İsmi
+Reçete Melekleri - F153
 
 # Ürün İle İlgili Bilgiler
 

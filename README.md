@@ -13,6 +13,7 @@ Takım Elemanları
 - Mehdi Eren: ?
 
 Ürün İsmi
+
 —Jetilaç—
 
 Ürün Açıklaması
@@ -35,5 +36,6 @@ Hedef Kitle
 - Geç vakitlerde, tatillerde, eczanelerin açık olmadığı zamanlarda eczaneye ihtiyaç duyanlar
 
 Product Backlog URL
+
 https://miro.com/app/board/uXjVMAZ-cEA=/?share_link_id=628897236870
 

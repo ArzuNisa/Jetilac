@@ -1,7 +1,7 @@
 # Takım İsmi
 Reçete Melekleri - F153
 
-# Ürün İle İlgili Bilgiler
+# Ürün İle İlgili Bilgiler 
 
 ## Takım Elemanları
 - Behiye Nilay Oğultekin: Product Owner

@@ -24,6 +24,7 @@ Jetilaç, sağlık hizmetlerini daha erişilebilir hale getirmek amacıyla geli�
 - Nöbetçi eczane/yakında olan eczaneleri gösterme
 - Kullanıcı hesap bilgilerini görüntüleme
 
+*silinecek satırlar
 
 
 ## Hedef Kitle

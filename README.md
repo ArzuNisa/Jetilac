@@ -42,7 +42,8 @@ Jetilaç, sağlık hizmetlerini daha erişilebilir hale getirmek amacıyla geli�
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 700 puanlık backlog bulunmaktadır. İlk sprint'in 100 puan, ikinci ve üçüncü sprint’in 300 puan olması gerektiğine karar verildi.
 
 
-- **Daily Scrum**: Daily Scrum toplantıları Discord üzerinden yapılmaktadır. Toplantı gününü ve saatini ayarlamak için Whatsapp kullanılmaktadır. Toplantılarla ilgili detaylar Word olarak eklenmiştir: [Sprint 1 Daily Scrum Chats](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint1Documents/Sprint_1_Daily_Scrum_Chats.docx)
+- **Daily Scrum**: Daily Scrum toplantıları Discord üzerinden yapılmaktadır. Toplantı gününü ve saatini ayarlamak için Whatsapp kullanılmaktadır. Toplantılarla ilgili detaylar Word olarak eklenmiştir: [Sprint 1 Daily Scrum Chats](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint1Documents/Sprint_1_Daily_Scrum_Chats.docx?raw=true)
+
 
 - **Sprint board update**: Sprint board screenshotları: 
 ![Backlog 1](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint1Documents/backlog1.png)

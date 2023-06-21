@@ -42,16 +42,19 @@ Jetilaç, sağlık hizmetlerini daha erişilebilir hale getirmek amacıyla geli�
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 700 puanlık backlog bulunmaktadır. İlk sprint'in 100 puan, ikinci ve üçüncü sprint’in 300 puan olması gerektiğine karar verildi.
 
 
-- **Daily Scrum**: Daily Scrum toplantıları Discord üzerinden yapılmaktadır. Toplantı gününü ve saatini ayarlamak için Whatsapp kullanılmaktadır. Toplantılarla ilgili detaylar Word olarak eklenmiştir: [Sprint 1 Daily Scrum Chats](Sprint_1_Daily_Scrum_Chats.docx)
+- **Daily Scrum**: Daily Scrum toplantıları Discord üzerinden yapılmaktadır. Toplantı gününü ve saatini ayarlamak için Whatsapp kullanılmaktadır. Toplantılarla ilgili detaylar Word olarak eklenmiştir: [Sprint 1 Daily Scrum Chats](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint1Documents/Sprint_1_Daily_Scrum_Chats.docx)
+
 
 - **Sprint board update**: Sprint board screenshotları: 
-![Backlog 1](https://raw.githubusercontent.com/OyunveUygulamaAkademisi/Bootcamp2022Example/main/ProjectManagement/Sprint1Documents/backlog1.png) 
+![Backlog 1](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint1Documents/backlog1.png)
 
 
 - **Ürün Durumu**: Ekran görüntüleri:
-  ![Screenshot 1](loginpage.png)
-  ![Screenshot 2](userprofilepage.jpeg)
-  ![Screenshot 3](settingpage.jpeg)
+
+  ![Screenshot 1](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint1Documents/homepage.jpeg)
+  ![Screenshot 2](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint1Documents/loginpage.png)
+  ![Screenshot 3](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint1Documents/settingpage.jpeg)
+  ![Screenshot 4](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint1Documents/userprofilepage.jpeg)
   
 - **Sprint Review**: 
 Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş ve bazıları kodlanmıştır. Firebase bağlantıları yapım aşamasındadır. Kodlanacak diğer sayfalar kararlaştırılmıştır. Sprint Review katılımcıları: Arzu Nisa Yalçınkaya, Behiye Nilay Oğultekin, İrem Nur Taşci, Mehmet Yasin Uzun

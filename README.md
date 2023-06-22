@@ -35,7 +35,7 @@ Jetilaç, sağlık hizmetlerini daha erişilebilir hale getirmek amacıyla geli�
 ---
 
 # Sprint 1
-
+-**Sprint Notları: User Story'ler product backlogların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayına ulaşılabilir. 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
 
 

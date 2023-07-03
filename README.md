@@ -35,7 +35,7 @@ Jetilaç, sağlık hizmetlerini daha erişilebilir hale getirmek amacıyla geli�
 ---
 
 # Sprint 1
--**Sprint Notları: User Story'ler product backlogların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayına ulaşılabilir. 
+- **Sprint Notları: User Story'ler product backlogların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayına ulaşılabilir. 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
 
 
@@ -71,28 +71,37 @@ Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş ve bazıları kodl
 ---
 
 # Sprint 2
+- **Sprint Notları: User Story'ler product backlogların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayına ulaşılabilir. 
+- **Sprint içinde tamamlanması tahmin edilen puan**: 300 Puan
+- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 700 puanlık backlog bulunmaktadır. İlk sprint'in 100 puan, ikinci ve üçüncü sprint’in 300 puan olması gerektiğine karar verildi.
 
-- **Sprint içinde tamamlanması tahmin edilen puan**:
 
-- **Daily Scrum**: 
+- **Daily Scrum**: Daily Scrum toplantıları Discord üzerinden yapılmaktadır. Toplantı gününü ve saatini ayarlamak için Whatsapp kullanılmaktadır. Toplantılarla ilgili detaylar Word olarak eklenmiştir: [Sprint 2 Daily Scrum Chats](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint2Documents/Sprint_2_Daily_Scrum_Chats.docx)
 
-- **Sprint board update**: 
+- **Sprint board update**: Sprint board screenshotları: 
+![Backlog 1](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint2Documents/backlog2.png)
+
 
 
 - **Ürün Durumu**: Ekran görüntüleri:
 
+  ![Screenshot 1](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint2Documents/siparis1.jpeg)
+  ![Screenshot 2](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint2Documents/siparis2.jpeg)
+
 - **Sprint Review**: 
-Alınan kararlar: 
-Sprint Review katılımcıları:  
+Alınan kararlar: Kullanıcı temel-orta seviyedeki sayfaları oluşturulmaya devam edilmiştir. İleri seviyedeki sayfaların nasıl yapılacağına ve görev dağılımlarına karar verilmiştir.
+Sprint Review katılımcıları: Arzu Nisa Yalçınkaya, Behiye Nilay Oğultekin, İrem Nur Taşci, Mehmet Yasin Uzun
+
 
 - **Sprint Retrospective:**
+- Çalışmaların hızlandırılması gerektiğine ve daha fazla toplantı yapılmasının gerekliliği vurgulanmıştır.
 
 
 ---
 
 ## Product Backlog URL
 
----
+---[Flutter Team 153 Miro Backlog Board](https://miro.com/app/board/uXjVMAZ-cEA=/?share_link_id=628897236870)
 
 # Sprint 3
 

@@ -35,7 +35,7 @@ Jetilaç, sağlık hizmetlerini daha erişilebilir hale getirmek amacıyla geli�
 ---
 
 # Sprint 1
-- **Sprint Notları: User Story'ler product backlogların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayına ulaşılabilir. 
+- **Sprint Notları**: User Story'ler product backlogların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayına ulaşılabilir. 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
 
 
@@ -71,7 +71,7 @@ Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş ve bazıları kodl
 ---
 
 # Sprint 2
-- **Sprint Notları: User Story'ler product backlogların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayına ulaşılabilir. 
+- **Sprint Notları**: User Story'ler product backlogların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayına ulaşılabilir. 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 300 Puan
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 700 puanlık backlog bulunmaktadır. İlk sprint'in 100 puan, ikinci ve üçüncü sprint’in 300 puan olması gerektiğine karar verildi.
 
@@ -94,7 +94,7 @@ Sprint Review katılımcıları: Arzu Nisa Yalçınkaya, Behiye Nilay Oğultekin
 
 
 - **Sprint Retrospective:**
-- Çalışmaların hızlandırılması gerektiğine ve daha fazla toplantı yapılmasının gerekliliği vurgulanmıştır.
+  - Çalışmaların hızlandırılması gerektiğine ve daha fazla toplantı yapılmasının gerekliliği vurgulanmıştır.
 
 
 ---

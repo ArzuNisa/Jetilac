@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'Theme.dart';
+
 class PaymentMethodsPage extends StatelessWidget {
   const PaymentMethodsPage({Key? key}) : super(key: key);
 
@@ -9,9 +11,9 @@ class PaymentMethodsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
+      theme: ThemeApp.lightTheme,
+      darkTheme: ThemeApp.darkTheme,
+      themeMode: ThemeMode.system,
       title: "PaymentMethods",
       home: Scaffold(
         appBar: AppBar(title: Text("pay".tr),),

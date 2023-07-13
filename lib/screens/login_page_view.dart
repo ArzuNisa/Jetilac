@@ -43,7 +43,7 @@ class _LoginPageViewState extends State<LoginPageView> {
               const _iconPerson(),
               _sizedBox25(),
               Text(
-                "𝐉𝐞𝐭ilaç'a Hoşgeldin",
+                "Kullanıcı Girişi",
                 style: TextStyle(color: Colors.grey[700], fontSize: 20),
               ),
               _sizedBox25(),
@@ -214,7 +214,6 @@ class _LoginPageViewState extends State<LoginPageView> {
       final UserCredential userCredential =
           await _firebaseAuth.signInWithCredential(credential);
 
-      // Giriş işlemi başarılı, HomePage'e yönlendir
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),

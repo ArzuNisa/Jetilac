@@ -31,13 +31,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  font_awesome_flutter: ^8.10.0
+  font_awesome_flutter: ^9.0.0-nullsafety
   community_material_icon: ^5.4.55
   flutter_map: ^0.13.1
   awesome_bottom_bar: any
   firebase_core: ^2.14.0
   firebase_auth: ^4.6.3
   google_sign_in: ^5.2.1
+  provider: ^6.0.1
+
 
 
 
@@ -83,11 +85,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family:
-      fonts:
-         - asset: fonts/Schyler-Italic.ttf
-           style: italic
+  #fonts:
+  #  - family: Roboto
+  #    fonts:
+  #       - asset: fonts/Roboto-Regular.ttf
+  #         style: normal
   #  - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

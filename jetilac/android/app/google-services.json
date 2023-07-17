@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "297745586773",
+    "project_id": "jetilac",
+    "storage_bucket": "jetilac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297745586773:android:66f90803416f41d4e692dc",
+        "android_client_info": {
+          "package_name": "com.recetemelekleri.jetilac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297745586773-ajjcrirvn3jhm0kurus3lj61uttfc810.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.recetemelekleri.jetilac",
+            "certificate_hash": "b5f45652994b2da059f1e82e5a59700c07552bd3"
+          }
+        },
+        {
+          "client_id": "297745586773-vvl1bo6lk75dmohdahgcpm0riaffpb1n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfgC1Tip9UxFs-GCeJZEURqvrTODYPdYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297745586773-nhd7hs7p7ric5ipenab64uq4m3a3i4ri.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

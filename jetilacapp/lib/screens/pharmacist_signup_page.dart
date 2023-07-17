@@ -131,7 +131,7 @@ class PharmacistRegisterPage extends StatelessWidget {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => PharmacistLoginPage(),
+          builder: (context) => PharmacyLogin(),
         ),
       );
     } catch (e) {

@@ -111,7 +111,7 @@ class _elevatedButtonWidgetState extends State<elevatedButtonWidget> {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const PharmacistLoginPage()),
+                builder: (context) => const PharmacyLogin()),
           );
         });
       }

@@ -34,8 +34,11 @@ class _PharmacyLoginState extends State<PharmacyLogin> {
 
   @override
   Widget build(BuildContext context) {
+    final Shader linearGradient = const LinearGradient(
+      colors: <Color>[Colors.lightBlueAccent, Colors.blueGrey],
+    ).createShader(Rect.fromLTWH(0.0, 0.0, 250.0, 80.0));
+
     return Scaffold(
-      backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -45,7 +48,8 @@ class _PharmacyLoginState extends State<PharmacyLogin> {
               _sizedBox25(),
               Text(
                 'pharmacist login'.tr,
-                style: TextStyle(color: Colors.grey[700], fontSize: 20),
+                style: TextStyle(foreground: Paint()..shader = linearGradient, fontSize: 25,fontWeight: FontWeight.bold),
+
               ),
               _sizedBox25(),
               UserNameTextField(
@@ -85,14 +89,20 @@ class _PharmacyLoginState extends State<PharmacyLogin> {
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('error'.tr),
+                          backgroundColor: Colors.black12,
+                          elevation: 20,
+                          behavior: SnackBarBehavior.floating,
+                          margin: EdgeInsets.all(15),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                          content: Text("error".tr),
+
                         ),
                       );
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    shape: const StadiumBorder(),
-                    primary: Colors.black,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
+
                   ),
                   child: const Text("Giriş Yap"),
                 ),
@@ -243,7 +253,7 @@ class _iconPerson extends StatelessWidget {
         child: const Icon(
           Icons.person,
           size: 100,
-          color: Colors.black,
+          color: Colors.lightBlueAccent,
         ),
       ),
     );
@@ -294,14 +304,18 @@ class UserNameTextField extends StatelessWidget {
         obscureText: obscureText,
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+            borderSide: BorderSide(color: Colors.grey,width: 2),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade400),
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+            borderSide: BorderSide(color: Colors.grey,width: 2),
+
           ),
           fillColor: Colors.grey.shade200,
           filled: true,
           hintText: hintText,
+          labelText:  hintText,
           hintStyle: TextStyle(color: Colors.grey[500]),
         ),
       ),

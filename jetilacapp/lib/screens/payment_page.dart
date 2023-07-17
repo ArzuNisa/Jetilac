@@ -70,17 +70,23 @@ class _PaymentState extends State<Payment> {
         children: [
           SizedBox(height: 40),
           Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.only(left: 15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Reçete Numarası: ${widget.prescriptionNumber}',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  'Tutar: ${amount.toStringAsFixed(2)} TL',
-                  style: TextStyle(fontSize: 20),
+                Container(
+                  child:Table( // Allows to dd a border decoration around your table
+                      children: [
+                        TableRow(children :[
+                          Text("Reçete Numarası"),
+                          Text(': ${widget.prescriptionNumber}'),
+                        ]),
+                        TableRow(children :[
+                          Text('Tutar'),
+                          Text(': ${amount.toStringAsFixed(2)} TL'),
+                        ]),
+                      ]
+                  ) ,
                 ),
               ],
             ),
@@ -119,7 +125,6 @@ class _PaymentState extends State<Payment> {
               },
             ),
           ),
-          SizedBox(height: 20),
           if (value != 1)
             Padding(
               padding: const EdgeInsets.all(5.0),
@@ -130,130 +135,132 @@ class _PaymentState extends State<Payment> {
             ),
           if (value == 0)
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.only(right: 20.0,left: 20.0),
               child: Form(
                 key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Kart Numarası',
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Kart numarası boş olamaz';
-                        }
-                        String strippedText =
-                            value.replaceAll(RegExp(r'\s+\b|\b\s'), '');
-                        if (strippedText.length != 16) {
-                          return 'Kart numarası 16 haneli olmalıdır';
-                        }
-                        return null;
-                      },
-                      onSaved: (value) {
-                        cardNumber = value;
-                      },
-                      keyboardType: TextInputType.number,
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                        LengthLimitingTextInputFormatter(16),
-                        _CardNumberFormatter(),
-                      ],
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Kart Sahibi Adı',
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Kart sahibi adı boş olamaz';
-                        }
-                        return null;
-                      },
-                      onSaved: (value) {
-                        cardHolderName = value;
-                      },
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'Son Kullanma Tarihi (AA/YY)',
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Son kullanma tarihi boş olamaz';
-                              }
-                              if (!value.contains('/') || value.length != 5) {
-                                return 'Geçerli bir son kullanma tarihi giriniz (AA/YY)';
-                              }
-                              return null;
-                            },
-                            onSaved: (value) {
-                              expirationDate = value;
-                            },
-                          ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Kart Numarası',
                         ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'CVV',
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'CVV boş olamaz';
-                              }
-                              if (value.length != 3) {
-                                return 'CVV 3 haneli olmalıdır';
-                              }
-                              return null;
-                            },
-                            onSaved: (value) {
-                              cvv = value;
-                            },
-                            keyboardType: TextInputType.number,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                              LengthLimitingTextInputFormatter(3),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    isPaymentCompleted
-                        ? Icon(
-                            Icons.check_circle,
-                            color: Colors.green,
-                            size: 48,
-                          )
-                        : ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                _formKey.currentState!.save();
-                                setState(() {
-                                  isPaymentCompleted = true;
-                                });
-                              }
-                            },
-                            child: Text('Öde'),
-                          ),
-                    if (isPaymentCompleted)
-                      ElevatedButton(
-                        onPressed: () {
-                          orderInfoProvider.setOrderInfo(orderInfo);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Success(),
-                            ),
-                          );
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Kart numarası boş olamaz';
+                          }
+                          String strippedText =
+                              value.replaceAll(RegExp(r'\s+\b|\b\s'), '');
+                          if (strippedText.length != 16) {
+                            return 'Kart numarası 16 haneli olmalıdır';
+                          }
+                          return null;
                         },
-                        child: Text('Siparişi Tamamla'),
+                        onSaved: (value) {
+                          cardNumber = value;
+                        },
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                          LengthLimitingTextInputFormatter(16),
+                          _CardNumberFormatter(),
+                        ],
                       ),
-                  ],
+                      TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Kart Sahibi Adı',
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Kart sahibi adı boş olamaz';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          cardHolderName = value;
+                        },
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                labelText: 'Son Kullanma Tarihi (AA/YY)',
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Son kullanma tarihi boş olamaz';
+                                }
+                                if (!value.contains('/') || value.length != 5) {
+                                  return 'Geçerli bir son kullanma tarihi giriniz (AA/YY)';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) {
+                                expirationDate = value;
+                              },
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                labelText: 'CVV',
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'CVV boş olamaz';
+                                }
+                                if (value.length != 3) {
+                                  return 'CVV 3 haneli olmalıdır';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) {
+                                cvv = value;
+                              },
+                              keyboardType: TextInputType.number,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                                LengthLimitingTextInputFormatter(3),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                      isPaymentCompleted
+                          ? Icon(
+                              Icons.check_circle,
+                              color: Colors.green,
+                              size: 48,
+                            )
+                          : ElevatedButton(
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  _formKey.currentState!.save();
+                                  setState(() {
+                                    isPaymentCompleted = true;
+                                  });
+                                }
+                              },
+                              child: Text('Öde'),
+                            ),
+                      if (isPaymentCompleted)
+                        ElevatedButton(
+                          onPressed: () {
+                            orderInfoProvider.setOrderInfo(orderInfo);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Success(),
+                              ),
+                            );
+                          },
+                          child: Text('Siparişi Tamamla'),
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),

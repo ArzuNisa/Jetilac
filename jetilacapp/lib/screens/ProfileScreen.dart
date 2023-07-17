@@ -44,14 +44,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('profile'.tr),
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
+              Stack(
+                children: [
+                  Container(
+                    width: 400,
+                    padding: EdgeInsets.all(20),
+                    margin: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        color: Colors.blueGrey,
+                        borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'profile'.tr,
+                        style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1,
+                            color: Colors.white70
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(height: 15,),
               CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage('assets/images/Jetilac.png'),
@@ -80,8 +103,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(15),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))
                   ),
-                  child: Text('settings'.tr),
+                  child: Text('settings'.tr,style: TextStyle(letterSpacing: 1),),
                 ),
               ),
               const SizedBox(height: 7),
@@ -141,30 +165,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
       ),
-      bottomNavigationBar:CurvedNavigationBar(
-        backgroundColor: Colors.blueGrey,
-        items: <Widget>[
-          Icon(Icons.shopping_cart_outlined, size: 30),
-          Icon(Icons.settings, size: 30),
-        ],
-        onTap: (index) {
-          //Handle button tap
-          if(index==0){
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => OrderingPage(),
-              ),
-            );
-          }
-          else if(index==1){
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => ProfileScreen(),
-              ),
-            );
-          }
-        },
-      ),
+
     );
   }
 

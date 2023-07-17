@@ -31,8 +31,8 @@ class WelcomeScreen extends StatelessWidget {
                 child: Container(
                   child: Column(
                     children: [
-                      SizedBox(height: 20,),
-                      SizedBox(width: 200,height:200,child: Image(image: AssetImage('assets/images/jetlogosiyah.png'))),
+                      SizedBox(height: 40,),
+                      SizedBox(width: 200,height:200,child: Image(image: AssetImage('assets/images/1c5cca94-72d8-4f35-bff2-3b8ff292b898.jpg'))),
                       SizedBox(height: 40,),
                       Align(alignment: Alignment.centerLeft,child: Text("Jetilaç",style: TextStyle(fontSize: 55,fontWeight: FontWeight.w800,foreground: Paint()..shader = linearGradient),)),
                       Align(alignment: Alignment.centerLeft,child: Text("Hoşgeldiniz",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20),)),

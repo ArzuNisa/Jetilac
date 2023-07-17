@@ -1,42 +1,55 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'ProfileScreen.dart';
 import 'order_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int currentIndex =0;
+
+  final screens =[
+    OrderingPage(),
+    ProfileScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('home page'.tr),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('welcome'.tr),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => OrderingPage()),
-                );
-              },
-              child: Text('order page'.tr),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfileScreen()),
-                );
-              },
-              child: Text('profile page'.tr),
-            ),
-          ],
-        ),
-      ),
+      body: screens[currentIndex],
+      bottomNavigationBar:CurvedNavigationBar(
+        height: 60.0,
+      backgroundColor: Colors.blueGrey,
+      items: <Widget>[
+        Icon(Icons.shopping_cart, size: 30),
+        Icon(Icons.settings, size: 30),
+      ],
+          onTap: (index) => setState(() => currentIndex =index),
+    ),
+      /*BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.white38,
+        unselectedItemColor: Colors.white38,
+        iconSize: 20,
+        selectedFontSize: 20,
+        unselectedFontSize: 16,
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
+        currentIndex: currentIndex,
+        onTap: (index) => setState(() => currentIndex =index),
+        backgroundColor: Colors.blueGrey.withOpacity(0.2),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),
+              label: "Shopping page",backgroundColor: Colors.blueGrey
+          ),
+          BottomNavigationBarItem(icon:Icon(Icons.settings),
+              label: "Settings",backgroundColor: Colors.blueGrey)
+        ],
+      ),*/
     );
   }
 }

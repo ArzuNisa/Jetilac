@@ -14,6 +14,8 @@ Reçete Melekleri - F153
 
 —Jetilaç—
 
+ ![Screenshot 1](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/jetilaclogo.png)
+
 ## Ürün Açıklaması
 
 Jetilaç, sağlık hizmetlerini daha erişilebilir hale getirmek amacıyla geliştirilmiş yenilikçi bir mobil uygulamadır. Jetilaç, hastaların kolaylıkla evlerinden ilaç siparişi verebilmesine olanak sağlar. Bu uygulama, hasta memnuniyetini artırırken, reçeteleri güvenli bir şekilde eczacılara iletmek ve kuryeler aracılığıyla ilaçları evlerinize teslim etmek için kullanılır. Jetilaç’ı kullanmak için hasta, uygulamayı akıllı telefonuna indirir ve kişisel bilgileriyle kaydolur. Ardından, reçetelerini sisteme kolayca girebilir. Reçeteler, güvenli bir şekilde uygulama üzerinden ilgili eczacılara iletilir. Jetilaç’ın sunduğu bir diğer büyük avantaj, ilaçların kuryeler aracılığıyla doğrudan eve teslim edilmesidir. Bu sayede hastalar, ilaçları almaya eczanelere gitmek zorunda kalmazlar ve sağlık sorunları nedeniyle dışarı çıkma zorunluluğu olmadığı durumlarda bile ihtiyaçlarını karşılayabilirler. Kuryeler, hızlı ve güvenli bir şekilde ilaçları hasta adresine ulaştırır. Jetilaç’ın kullanıcı dostu arayüzü ve güvenlik önlemleri, hastaların kişisel bilgilerinin ve sağlık verilerinin korunmasını sağlar. Tüm işlemler şifreleme protokolleriyle korunur ve gizlilik politikalarına uygun olarak gerçekleştirilir. Jetilaç, yaşlılar, hareket kısıtlılığı olanlar veya yoğun iş temposu nedeniyle eczanelere zaman ayıramayanlar gibi birçok hasta için büyük bir kolaylık sağlar. Aynı zamanda acil durumlar veya önceden belirlenmiş bir zaman dilimi için düzenli ilaç teslimatları gibi özel talepleri de karşılayabilir. Jetilaç, çağdaş teknoloji ve sağlık sektöründeki ihtiyaçlar arasında köprü kurarak hastalara güvenli, hızlı ve kullanıcı dostu bir hizmet sunar. Jetilaç sayesinde, ilaç siparişi vermek ve reçeteleri eczacılara iletmek artık çok daha kolay ve güvenlidir.
@@ -120,8 +122,12 @@ Sprint Review katılımcıları: Arzu Nisa Yalçınkaya, Behiye Nilay Oğultekin
 - **Ürün Durumu**: Ekran görüntüleri:
   ![Screenshot 1](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/giris.jpeg)
   ![Screenshot 2](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/kullanicigiris.jpeg)
-  ![Screenshot 3](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/eczacikayit.jpeg)
-  ![Screenshot 4](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/order.jpeg)
+  ![Screenshot 3](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/userprofil.png)
+  ![Screenshot 4](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/eczacikayit.jpeg)
+  ![Screenshot 5](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/order.jpeg)
+  ![Screenshot 6](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/siparisekrani.png)
+  ![Screenshot 7](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/eczaneprofil.png)
+  ![Screenshot 8](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/settings.png)
  
 - **Sprint Review**: 
 Alınan kararlar: Kullanıcı temel sayfaların arayüzleri, algoritmaları kodlanmış, firebase servislerine bağlantıları yapılmış ve kodlanamayan sayfa, algoritma ve servis bağlantıları hakkında değerlendirmeler yapılmıştır. 

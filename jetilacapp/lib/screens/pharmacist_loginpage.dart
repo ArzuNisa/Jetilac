@@ -1,129 +1,219 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:testapp/screens/pharmacist_signup_page.dart';
-import 'package:testapp/screens/pharmacy_homePage.dart';
-import 'login_page_view.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'pharmacy_homePage.dart';
+import 'pharmacist_signup_page.dart';
+import 'package:get/get.dart';
 
-class PharmacistLoginPage extends StatefulWidget {
-  const PharmacistLoginPage({Key? key}) : super(key: key);
+class PharmacyLogin extends StatefulWidget {
+  const PharmacyLogin({Key? key});
 
   @override
-  _PharmacistLoginPageState createState() => _PharmacistLoginPageState();
+  _PharmacyLoginState createState() => _PharmacyLoginState();
 }
 
-class _PharmacistLoginPageState extends State<PharmacistLoginPage> {
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController verificationCodeController = TextEditingController();
+class _PharmacyLoginState extends State<PharmacyLogin> {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  late GoogleSignIn _googleSignIn;
   late FirebaseAuth _firebaseAuth;
 
   @override
   void initState() {
     super.initState();
+    _googleSignIn = GoogleSignIn();
     _firebaseAuth = FirebaseAuth.instance;
   }
 
   @override
   void dispose() {
-    phoneNumberController.dispose();
-    verificationCodeController.dispose();
+    usernameController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
-  Future<void> _verifyPhoneNumber(String phoneNumber) async {
-    try {
-      await _firebaseAuth.verifyPhoneNumber(
-        phoneNumber: phoneNumber,
-        verificationCompleted: (PhoneAuthCredential credential) {},
-        verificationFailed: (FirebaseAuthException e) {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text('Doğrulama Hatası'),
-                content: Text(e.message ?? ''),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('Tamam'),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[300],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              _sizedBox25(),
+              const _iconPerson(),
+              _sizedBox25(),
+              Text(
+                'pharmacist login'.tr,
+                style: TextStyle(color: Colors.grey[700], fontSize: 20),
+              ),
+              _sizedBox25(),
+              UserNameTextField(
+                hintText: 'mail'.tr,
+                controller: usernameController,
+                obscureText: false,
+              ),
+              _sizedBox20(),
+              UserNameTextField(
+                hintText: 'password'.tr,
+                controller: passwordController,
+                obscureText: true,
+              ),
+              const _passwordTextButton(),
+              _sizedBox10(),
+              SizedBox(
+                height: 65,
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    String enteredUsername = usernameController.text;
+                    String enteredPassword = passwordController.text;
+
+                    try {
+                      UserCredential userCredential = await FirebaseAuth
+                          .instance
+                          .signInWithEmailAndPassword(
+                        email: enteredUsername,
+                        password: enteredPassword,
+                      );
+
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PharmacyHomePage()),
+                      );
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('error'.tr),
+                        ),
+                      );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: const StadiumBorder(),
+                    primary: Colors.black,
                   ),
-                ],
-              );
-            },
-          );
-        },
-        codeSent: (String verificationId, int? resendToken) {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text('Doğrulama Kodu'),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
+                  child: const Text("Giriş Yap"),
+                ),
+              ),
+              _sizedBox10(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
                   children: [
-                    Text(
-                        'Lütfen telefonunuza gönderilen doğrulama kodunu girin:'),
-                    SizedBox(height: 10),
-                    TextField(
-                      controller: verificationCodeController,
-                      keyboardType: TextInputType.number,
-                      maxLength: 6,
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.9,
+                        color: Colors.grey[500],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        "Veya",
+                        style: TextStyle(color: Colors.grey[700]),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.9,
+                        color: Colors.grey[500],
+                      ),
                     ),
                   ],
                 ),
-                actions: [
-                  TextButton(
+              ),
+              _sizedBox25(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      _signInWithGoogle();
                     },
-                    child: Text('İptal'),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      String verificationCode =
-                          verificationCodeController.text.trim();
-                      _signInWithPhoneNumber(verificationId, verificationCode);
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('Doğrula'),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      primary: Colors.grey[200],
+                    ),
+                    icon: Image.asset(
+                      "assets/images/google.png",
+                      height: 20,
+                    ),
+                    label: Text(
+                      "Google ile giriş yap",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 ],
-              );
-            },
-          );
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {},
-      );
-    } catch (e) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Doğrulama Hatası'),
-            content: Text(e.toString()),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('Tamam'),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Üye değil misin?",
+                        style: TextStyle(color: Colors.grey[700]),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PharmacistRegisterPage(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'sign up'.tr,
+                          style: TextStyle(color: Colors.blue[800]),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
               ),
             ],
-          );
-        },
-      );
-    }
+          ),
+        ),
+      ),
+    );
   }
 
-  Future<void> _signInWithPhoneNumber(
-      String verificationId, String verificationCode) async {
+  SizedBox _sizedBox10() => const SizedBox(
+    height: 10,
+  );
+
+  SizedBox _sizedBox25() => const SizedBox(
+    height: 25,
+  );
+
+  SizedBox _sizedBox20() => const SizedBox(
+    height: 20,
+  );
+
+  SizedBox _sizedBox50() => const SizedBox(
+    height: 50,
+  );
+
+  void _signInWithGoogle() async {
     try {
-      PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: verificationId,
-        smsCode: verificationCode,
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleAuth =
+      await googleUser!.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
 
+      final UserCredential userCredential =
       await _firebaseAuth.signInWithCredential(credential);
 
       Navigator.pushReplacement(
@@ -131,131 +221,88 @@ class _PharmacistLoginPageState extends State<PharmacistLoginPage> {
         MaterialPageRoute(builder: (context) => PharmacyHomePage()),
       );
     } catch (e) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Giriş Hatası'),
-            content: Text(e.toString()),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('Tamam'),
-              ),
-            ],
-          );
-        },
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('error'.tr),
+        ),
       );
     }
   }
-  final Shader linearGradient = const LinearGradient(
-    colors: <Color>[Colors.lightBlueAccent, Colors.blueGrey],
-  ).createShader(Rect.fromLTWH(0.0, 0.0, 250.0, 80.0));
+}
+
+class _iconPerson extends StatelessWidget {
+  const _iconPerson({
+    Key? key,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              SizedBox(height: 50),
-              Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                child: const Icon(
-                  Icons.person,
-                  size: 100,
-                  color: Colors.lightBlueAccent,
-                ),
-              ),
-              SizedBox(height: 25),
-              Text(
-                "Eczacı Girişi",
-                style: TextStyle(foreground: Paint()..shader = linearGradient, fontSize: 25,fontWeight: FontWeight.bold),
+    return SafeArea(
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: const Icon(
+          Icons.person,
+          size: 100,
+          color: Colors.black,
+        ),
+      ),
+    );
+  }
+}
 
-              ),
-              SizedBox(height: 25),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: TextField(
-                  controller: phoneNumberController,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      borderSide: BorderSide(color: Colors.grey,width: 2),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      borderSide: BorderSide(color: Colors.grey.shade400),
-                    ),
-                    fillColor: Colors.grey.shade200,
-                    filled: true,
-                    hintText: "Telefon Numarası",
-                    labelText: "Telefon Numarası",
-                    prefixIcon: Icon(Icons.phone),
-                    hintStyle: TextStyle(color: Colors.grey[500]),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              SizedBox(
-                height: 65,
-                width: 300,
-                child: ElevatedButton(
-                  onPressed: () {
-                    String phoneNumber = phoneNumberController.text.trim();
-                    if (phoneNumber.isNotEmpty) {
-                      _verifyPhoneNumber(phoneNumber);
-                    } else {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            elevation: 20,
-                            backgroundColor: Colors.white70,
-                            shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)) ,
-                            title: Text('Hata'),
-                            content: Text('Telefon numarası boş bırakılamaz.'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text('Tamam'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                  ),
-                  child: Text("Telefonu Doğrula",style: TextStyle(fontSize: 17,letterSpacing: 1),),
-                ),
-              ),
-              SizedBox(height: 20),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PharmacistRegisterPage()),
-                  );
-                },
-                child: Text(
-                  "Üye Ol",
-                  style: TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 16,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-            ],
+class _passwordTextButton extends StatelessWidget {
+  const _passwordTextButton({
+    Key? key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          TextButton(
+            onPressed: () {},
+            style: TextButton.styleFrom(primary: Colors.grey[800]),
+            child: const Text("Şifremi Unuttum?"),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class UserNameTextField extends StatelessWidget {
+  const UserNameTextField({
+    Key? key,
+    required this.hintText,
+    required this.controller,
+    required this.obscureText,
+  });
+
+  final String hintText;
+  final TextEditingController controller;
+  final bool obscureText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: TextField(
+        controller: controller,
+        obscureText: obscureText,
+        decoration: InputDecoration(
+          enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey.shade400),
+          ),
+          fillColor: Colors.grey.shade200,
+          filled: true,
+          hintText: hintText,
+          hintStyle: TextStyle(color: Colors.grey[500]),
         ),
       ),
     );

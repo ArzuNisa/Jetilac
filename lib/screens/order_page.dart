@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:testapp/screens/HomePage.dart';
 import 'package:testapp/screens/ProfileScreen.dart';
 import 'package:testapp/screens/SettingsPage.dart';
 
@@ -168,7 +169,8 @@ class _OrderingPageState extends State<OrderingPage> {
                         borderSide: BorderSide(color: Colors.grey,width: 2),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        borderSide: BorderSide(color: Colors.grey,width: 2),
                       ),
                       fillColor: Colors.grey.shade200,
                       filled: true,
@@ -362,7 +364,6 @@ class _OrderingPageState extends State<OrderingPage> {
                               }
                             },
                             child: Container(
-                              width: 100,
                               decoration: BoxDecoration(
                                 color: Colors.blueGrey,
                                 borderRadius: BorderRadius.circular(20),
@@ -382,30 +383,7 @@ class _OrderingPageState extends State<OrderingPage> {
           ],
         ),
       ),
-        bottomNavigationBar:CurvedNavigationBar(
-          backgroundColor: Colors.blueGrey,
-          items: <Widget>[
-            Icon(Icons.shopping_cart_outlined, size: 30),
-            Icon(Icons.settings, size: 30),
-          ],
-          onTap: (index) {
-            //Handle button tap
-            if(index==0){
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => OrderingPage(),
-                ),
-              );
-            }
-            else if(index==1){
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => ProfileScreen(),
-                ),
-              );
-            }
-          },
-        ),
+
     );
   }
 }
@@ -453,101 +431,175 @@ class AddressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+     /* appBar: AppBar(
         title: Text('oaai'.tr),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(20.0),
+      ),*/
+      body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'prescription number'.tr +': $prescriptionNumber',
-              style: TextStyle(fontSize: 20),
-            ),
-            Text(
-              'id'.tr + ': $tcKimlikNumber',
-              style: TextStyle(fontSize: 20),
-            ),
-            Text(
-              'city'.tr + ': $city',
-              style: TextStyle(fontSize: 20),
-            ),
-            Text(
-                'district'.tr +': $district',
-              style: TextStyle(fontSize: 20),
-            ),
-            Text(
-                'pharmacy'.tr +': $pharmacy',
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'pcyoiitiamiti'.tr,
-              style: TextStyle(color: Colors.red, fontSize: 15),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Row(
-                children: [
-                  Icon(Icons.arrow_back),
-                  Text('go back'.tr),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Divider(
-              height: 1,
-              color: Colors.black,
-            ),
-            SizedBox(height: 20),
-            Text(
-                'address'.tr + ':',
-              style: TextStyle(fontSize: 20),
-            ),
-            TextFormField(
-              controller: addressController,
-              decoration: InputDecoration(
-                enabledBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  borderSide: BorderSide(color: Colors.grey,width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade400),
-                ),
-                hintText: 'peyfai'.tr,
-                labelText:'peyfai'.tr ,
-                hintStyle: TextStyle(color: Colors.grey[500]),
-              ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                String address = addressController.text;
-                if (!isAddressValid(address)) {
-                  showAlertDialog(
-                      context, 'peyfai'.tr);
-                } else {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Builder(
-                        builder: (BuildContext context) {
-                          return ChangeNotifierProvider(
-                            create: (context) => OrderInfoProvider(),
-                            child: Payment(
-                              prescriptionNumber: prescriptionNumber,
-                            ),
-                          );
-                        },
+            Stack(
+              children: [
+                Container(
+                  width: 400,
+                  padding: EdgeInsets.all(20),
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      color: Colors.blueGrey,
+                      borderRadius: BorderRadius.circular(15)
+                  ),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "oaai".tr,
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1,
+                          color: Colors.white70
                       ),
                     ),
-                  );
-                }
-              },
-              child: Text('go forward'.tr),
+                  ),
+                )
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    child: Table( // Allows to dd a border decoration around your table
+                        children: [
+                          TableRow(children :[
+                            Text('prescription number'.tr ),
+                            Text(': $prescriptionNumber'),
+                          ]),
+                          TableRow(children :[
+                            Text('id'.tr,),
+                            Text(': $tcKimlikNumber'),
+                          ]),
+                          TableRow(children :[
+                            Text('city'.tr ),
+                            Text(': $city'),
+                          ]),
+                          TableRow(children :[
+                            Text('district'.tr ),
+                            Text(': $district'),
+                          ]),
+                          TableRow(children :[
+                            Text('pharmacy'.tr),
+                            Text(': $pharmacy'),
+                          ]),
+                        ]
+                    ),
+                  )
+                  /*Text(
+                    'prescription number'.tr +': $prescriptionNumber',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    'id'.tr + ': $tcKimlikNumber',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    'city'.tr + ': $city',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                      'district'.tr +': $district',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                      'pharmacy'.tr +': $pharmacy',
+                    style: TextStyle(fontSize: 20),
+                  ),*/,
+                  SizedBox(height: 20),
+                  Text(
+                    'pcyoiitiamiti'.tr,
+                    style: TextStyle(color: Colors.red, fontSize: 15),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.arrow_back),
+                        Text('go back'.tr),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Divider(
+                    height: 1,
+                    color: Colors.black,
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                      'address'.tr + ':',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  SizedBox(height: 20,),
+                  TextFormField(
+                    controller: addressController,
+                    decoration: InputDecoration(
+                      enabledBorder: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        borderSide: BorderSide(color: Colors.grey,width: 2),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          borderSide: BorderSide(color: Colors.grey,width: 2),
+                      ),
+                      hintText: 'peyfai'.tr,
+                      labelText:'peyfai'.tr ,
+                      hintStyle: TextStyle(color: Colors.grey[500]),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),)
+    ),
+                      onPressed: () {
+                        String address = addressController.text;
+                        if (!isAddressValid(address)) {
+                          showAlertDialog(
+                              context, 'peyfai'.tr);
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Builder(
+                                builder: (BuildContext context) {
+                                  return ChangeNotifierProvider(
+                                    create: (context) => OrderInfoProvider(),
+                                    child: Payment(
+                                      prescriptionNumber: prescriptionNumber,
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Text('go forward'.tr,style: TextStyle(fontSize: 17),),
+                          ),
+                        ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

@@ -22,48 +22,84 @@ class SettingsPage extends StatelessWidget {
       themeMode: ThemeMode.system,
       title: "Settings",
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('settings'.tr),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
-              itemProfile(
-                  'security'.tr, 'psw'.tr, CupertinoIcons.lock, context),
-              const SizedBox(height: 20),
-              itemSettings3('pay'.tr, CupertinoIcons.money_dollar, context),
-              const SizedBox(height: 20),
-              itemSettings4('lang'.tr, CupertinoIcons.book, context),
-              const SizedBox(height: 20),
-              itemSettings2('help'.tr, CupertinoIcons.question, context),
-              const SizedBox(height: 20),
-              itemSettings('about'.tr, CupertinoIcons.info, context),
-              const SizedBox(height: 20),
-              itemSettings('exit'.tr, CupertinoIcons.xmark, context),
-              const SizedBox(height: 20),
-              SizedBox(
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ProfileScreen()));
-                    },
-                    child: Text('btprofile'.tr)),
-              ),
-              SizedBox(
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PharmacyPage()));
-                    },
-                    child: Text('pharmacy'.tr)),
-              ),
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      width: 400,
+                      padding: EdgeInsets.all(20),
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.blueGrey,
+                          borderRadius: BorderRadius.circular(15)
+                      ),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "settings".tr,
+                          style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1,
+                              color: Colors.white70
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 20),
+                itemProfile(
+                    'security'.tr, 'psw'.tr, CupertinoIcons.lock, context),
+                const SizedBox(height: 20),
+                itemSettings3('pay'.tr, CupertinoIcons.money_dollar, context),
+                const SizedBox(height: 20),
+                itemSettings4('lang'.tr, CupertinoIcons.book, context),
+                const SizedBox(height: 20),
+                itemSettings2('help'.tr, CupertinoIcons.question, context),
+                const SizedBox(height: 20),
+                itemSettings('about'.tr, CupertinoIcons.info, context),
+                const SizedBox(height: 20),
+                itemSettings('exit'.tr, CupertinoIcons.xmark, context),
+                const SizedBox(height: 20),
+                SizedBox(
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))))
+                    ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProfileScreen()));
+                      },
+                      child: Text('btprofile'.tr,style: TextStyle(
+                        letterSpacing: 1,
+                        fontSize: 15
+                      ),)),
+                ),
+                SizedBox(
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))))
+                    ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PharmacyPage()));
+                      },
+                      child: Text('pharmacy'.tr,style: TextStyle(
+                          letterSpacing: 1,
+                          fontSize: 15
+                      ),)),
+                ),
+              ],
+            ),
           ),
         ),
       ),

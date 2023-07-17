@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:testapp/screens/HomePage.dart';
 import 'package:testapp/screens/ProfileScreen.dart';
+import 'package:testapp/screens/order_page.dart';
+import 'package:testapp/screens/pharmacy_homePage.dart';
 import 'package:testapp/screens/welcome_screen.dart';
 import 'Theme.dart';
 import 'LangUpdate.dart';
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeApp.darkTheme,
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: WelcomeScreen(),
+      home: PharmacyHomePage(),
     );
   }
 }

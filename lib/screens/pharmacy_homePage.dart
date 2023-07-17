@@ -1,9 +1,7 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
+import 'package:testapp/screens/SettingsPage.dart';
 import 'incoming_ordersPage.dart';
-import 'orders.dart';
-
 class PharmacyHomePage extends StatefulWidget {
   const PharmacyHomePage({Key? key}) : super(key: key);
 
@@ -12,32 +10,25 @@ class PharmacyHomePage extends StatefulWidget {
 }
 
 class _PharmacyHomePageState extends State<PharmacyHomePage> {
+  int currentIndex =0;
+  final screens=[
+    IncomingOrders(),
+    SettingsPage(),
+  ];
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => OrderInfoProvider(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Ana Sayfa"),
+
+      return Scaffold(
+        body: screens[currentIndex],
+        bottomNavigationBar:CurvedNavigationBar(
+          height: 60.0,
+          backgroundColor: Colors.lightBlueAccent,
+          items: <Widget>[
+            Icon(Icons.shopping_cart, size: 30),
+            Icon(Icons.settings, size: 30),
+          ],
+          onTap: (index) => setState(() => currentIndex =index),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => IncomingOrders()),
-                  );
-                },
-                child: Text("Gelen Siparişler"),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

@@ -14,7 +14,7 @@ Reçete Melekleri - F153
 
 —Jetilaç—
 
- ![Screenshot 1](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/jetilaclogo.png)
+ ![Screenshot 1](https://github.com/ArzuNisa/Jetilac/blob/main/ProjectManagement/Sprint3Documents/jetilaclogo.jpg)
 
 ## Ürün Açıklaması
 
